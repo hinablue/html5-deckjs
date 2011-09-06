@@ -42,4 +42,4 @@ Type your project name, and wait, and all done.
 
 Where is the layout files
 -------------------------
-The parent directory of the html5-deckjs, named by your project name.
+Find in your home directory.
