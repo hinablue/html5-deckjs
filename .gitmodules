@@ -1,0 +1,6 @@
+[submodule "libs"]
+    path = libs/html5-boilerplate
+    url = git://github.com/paulirish/html5-boilerplate.git
+[submodule "libs"]
+    path = libs/deck.js
+    url = git://github.com/imakewebthings/deck.js.git

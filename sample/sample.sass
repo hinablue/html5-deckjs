@@ -1,0 +1,90 @@
+@import compass/css3
+@import compass/layout
+@import compass/typography
+@import compass/utilities
+
+$font_size: 16px
+$wall_width: 900px
+$wall_height: 600px
+$font_color: rgb(180,180,180)
+$min_height: $font_size * 2
+$line_height: $font_size * 1.25
+$sass_color: rgba(#ff3399, .8)
+$compass_color: rgba(white, .9)
+$css_color: rgba(#66ff33, .8)
+$gray_color: rgba(#333333, .8)
+$light_green: #1c77ff
+
+$default-text-shadow-color: rgba(#333333, .6)
+$default-text-shadow-blur: 3px
+$default-text-shadow-v-offset: 3px
+
+body 
+  font: #{$font_size}/1.0 "Sans", "Lucida Grande", "Trebuchet MS", Verdana, sans-serif
+  line-height: 1em
+  margin: 0
+  padding: 0
+  overflow: hidden
+  color: $font_color
+  line-height: $line_height
+  +single-text-shadow(gray, 0px, 0px, 2px)
+
+.touch body 
+  -webkit-text-size-adjust: none
+a, a:visited, a:link
+  text-decoration: none
+a:hover
+  color: $sass_color
+
+.presentation
+  > header 
+    width: 100%
+    height: auto
+    background: rgba(0,0,0, .8)
+    overflow: hidden
+    position: relative
+    z-index: 4
+    > nav
+      color: white
+      h1
+        font-size: 1.2em
+        padding: .4em 
+        a, a:visited, a:link
+          color: white
+  > footer
+    position: fixed
+    bottom: 0
+    left: 0
+    width: 100%
+    height: $line_height
+    line-height: $line_height
+    font-size: .25em
+    z-index: 4
+    > p
+      float: right
+      margin-right: 10px
+      padding: 0 4px
+      background: white
+      > a
+        color: $light_green
+  .deck-container
+    width: auto
+    max-width: $wall_width
+    margin: 16px auto 24px auto
+    height: $wall_height
+    font-size: $font_size
+    overflow: hidden
+    .slide 
+      overflow: hidden
+      footer
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+        >p
+          text-align: center
+          font-size: .92em
+          line-height: 1em
+          margin: 0.25em
+          padding: 0
+          color: gray
