@@ -12,7 +12,7 @@ command::
 
     $ wget --no-check-certificate https://github.com/hinablue/html5-deckjs/raw/master/install.sh -O - | sh
 
-The manual way to install pct.vim
+The manual way to install html5-deckjs
 ----------------------------------
 1. clone to your home directory::
 
