@@ -24,14 +24,14 @@ The manual way to install pct.vim
 
 How to update
 -------------
-::
+command::
 
     $ cd html5-deckjs
     $ git pull; ./update.sh
 
 How to generator presentation layout
 ------------------------------------
-::
+command::
 
     $ cd html5-deckjs
     $ ./html5-deckjs.sh
