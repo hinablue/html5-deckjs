@@ -48,7 +48,7 @@ IFS=""
 while read value
 do
     style=$(echo $value | grep 'style.css' | wc -l)
-    body=$(echo $value | grep 'id="container"' | wc -l)
+    body=$(echo $value | grep '<body>' | wc -l)
     main=$(echo $value | grep 'role="main"' | wc -l)
     script=$(echo $value | grep '<script defer src="js/script.js"></script>' | wc -l)
     special=$(echo $value | grep "window.jQuery" | wc -l)
@@ -75,7 +75,7 @@ do
         echo -e $value >> $TMPFILE
     elif [[ $body -ne 0 ]]
     then
-        echo '  <div id="container" class="presentation">' >> $TMPFILE
+        echo '  <body class="presentation">' >> $TMPFILE
     elif [[ $main -ne 0 ]]
     then
         echo '    <div role="main" class="deck-container">
