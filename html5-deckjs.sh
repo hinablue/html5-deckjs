@@ -49,7 +49,7 @@ while read value
 do
     style=$(echo $value | grep 'style.css' | wc -l)
     body=$(echo $value | grep 'id="container"' | wc -l)
-    main=$(echo $value | grep 'id="main"' | wc -l)
+    main=$(echo $value | grep 'role="main"' | wc -l)
     script=$(echo $value | grep '<script defer src="js/script.js"></script>' | wc -l)
     special=$(echo $value | grep "window.jQuery" | wc -l)
     if [[ $style -ne 0 ]]
@@ -63,6 +63,7 @@ do
 
   <!-- deck.js core/extensions stylesheets -->
   <link rel="stylesheet" href="js/mylibs/deck.js/core/deck.core.css"> 
+  <link rel="stylesheet" href="js/mylibs/deck.js/extensions/goto/deck.goto.css">
   <link rel="stylesheet" href="js/mylibs/deck.js/extensions/menu/deck.menu.css"> 
   <link rel="stylesheet" href="js/mylibs/deck.js/extensions/navigation/deck.navigation.css"> 
   <link rel="stylesheet" href="js/mylibs/deck.js/extensions/status/deck.status.css"> 
@@ -77,7 +78,7 @@ do
         echo '  <div id="container" class="presentation">' >> $TMPFILE
     elif [[ $main -ne 0 ]]
     then
-        echo '    <div id="main" rols="main" class="deck-container">
+        echo '    <div role="main" class="deck-container">
       <div class="slide" id="startup">
         <h1>Ready to go.</h1>
       </div>
@@ -93,6 +94,12 @@ do
       /
       <span class="deck-status-total"></span> 
       </p> 
+
+      <form action="." method="get" class="goto-form">
+        <label for="goto-slide">Go to slide:</label>
+        <input type="number" name="slidenum" id="goto-slide">
+        <input type="submit" value="Go">
+      </form>
 
       <a href="." title="Permalink to this slide" class="deck-permalink">#</a> 
 ' >> $TMPFILE
