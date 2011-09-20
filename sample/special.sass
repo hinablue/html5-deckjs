@@ -1,0 +1,40 @@
+$on-slide-parent: ""
+$on-slide-child: "footer > p"
+.on-slide-hide-style
+  +opacity(0)
+.on-slide-show-style
+  +single-transition('opacity', 1s, linear, 0.5s)
+
+@mixin on-slide-hide($page: 1, $nth_child: 1, $child: $on-slide-child, $parent_id: $on-slide-parent)
+  @if type-of($page) == number and $page > 0
+    $page: $page - 1
+    @if type-of($nth_child) == number
+      .on-slide-#{$page} #{$parent_id} #{$child}:nth-child(#{$nth_child})
+        @extend .on-slide-hide-style
+    @else if type-of($nth_child) == list
+      @for $i from 1 through length($nth_child)
+        .on-slide-#{$page} #{$parent_id} #{$child}:nth-child(#{nth($nth_child, $i)})
+          @extend .on-slide-hide-style
+
+@mixin on-slide-show($page: 1, $nth_child: 1, $child: $on-slide-child, $parent_id: $on-slide-parent)
+  @if type-of($page) == number and $page > 0
+    $page: $page - 1
+    @if type-of($nth_child) == number
+      .on-slide-#{$page} #{$parent_id} #{$child}:nth-child(#{$nth_child})
+        @extend .on-slide-show-style
+    @else if type-of($nth_child) == list
+      @for $i from 1 through length($nth_child)
+        .on-slide-#{$page} #{$parent_id} #{$child}:nth-child(#{nth($nth_child, $i)})
+          @extend .on-slide-show-style
+
+@mixin on-slide-hide-and-show($hide_page: 1, $show_page: 2, $nth_child: 1, $child: $on-slide-child, $parent_id: $on-slide-parent)
+  @if type-of($hide_page) == number and type-of($show_page) == number and $hide_page < $show_page
+    @for $i from $hide_page through $show_page - 1
+      +on-slide-hide($i, $nth_child, $child, $parent_id)
+    +on-slide-show($show_page, $nth_child, $child, $parent_id)
+
+@mixin focus-on-slide($page: 1, $trigger: "", $element: "", $parent_id: $on-slide-parent)
+  @if $page > 0 and $element != "" and $trigger != ""
+    $page: $page - 1
+    .on-slide-#{$page} #{$parent_id} #{$element}
+      @extend #{$trigger}
