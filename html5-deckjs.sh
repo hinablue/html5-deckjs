@@ -105,16 +105,17 @@ do
 ' >> $TMPFILE
     elif [[ $script -ne 0 ]]
     then
-        echo -e $value >> $TMPFILE
         echo '  <!-- Deck Core and extensions --> 
   <script src="js/mylibs/deck.js/core/deck.core.js"></script> 
   <script src="js/mylibs/deck.js/extensions/goto/deck.goto.js"></script> 
   <script src="js/mylibs/deck.js/extensions/status/deck.status.js"></script> 
   <script src="js/mylibs/deck.js/extensions/navigation/deck.navigation.js"></script> 
   <script src="js/mylibs/deck.js/extensions/hash/deck.hash.js"></script>' >> $TMPFILE
+        echo -e $value >> $TMPFILE
     elif [[ $special -ne 0 ]]
     then
-        echo "  <script>window.jQuery || document.write('<script src=\"js/libs/jquery-1.6.3.min.js\"><\\/script>')</script>" >> $TMPFILE
+        jquery=`ls "$src"/libs/html5-boilerplate/js/libs/jquery-*.min.js | sed -e 's/\(.*\)jquery\(.*\)/jquery\2/gi'`
+        echo "  <script>window.jQuery || document.write('<script src=\"js/libs/$jquery\"><\\/script>')</script>" >> $TMPFILE
     else
         echo -e $value >> $TMPFILE
     fi
