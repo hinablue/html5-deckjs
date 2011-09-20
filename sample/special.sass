@@ -41,5 +41,5 @@ $on-slide-child: "footer > p"
         @extend #{$trigger}
     @else if type-of($element) == list
       @for $i from 1 through length($element)
-        .on-slide-#{$page} #{$parent_id} #{nth($element, $i}
+        .on-slide-#{$page} #{$parent_id} #{nth($element, $i)}
           @extend #{$trigger}
