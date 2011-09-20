@@ -29,7 +29,7 @@ $on-slide-child: "footer > p"
 
 @mixin on-slide-hide-and-show($hide_page: 1, $show_page: 2, $nth_child: 1, $child: $on-slide-child, $parent_id: $on-slide-parent)
   @if type-of($hide_page) == number and type-of($show_page) == number and $hide_page < $show_page
-    @for $i from $hide_page through $show_page - 1
+    @for $i from $hide_page - 1 through $show_page - 1
       +on-slide-hide($i, $nth_child, $child, $parent_id)
     +on-slide-show($show_page, $nth_child, $child, $parent_id)
 
