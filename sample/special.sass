@@ -36,5 +36,10 @@ $on-slide-child: "footer > p"
 @mixin focus-on-slide($page: 1, $trigger: "", $element: "", $parent_id: $on-slide-parent)
   @if $page > 0 and $element != "" and $trigger != ""
     $page: $page - 1
-    .on-slide-#{$page} #{$parent_id} #{$element}
-      @extend #{$trigger}
+    @if type-of($element) == string
+      .on-slide-#{$page} #{$parent_id} #{$element}
+        @extend #{$trigger}
+    @else if type-of($element) == list
+      @for $i from 1 through length($element)
+        .on-slide-#{$page} #{$parent_id} #{nth($element, $i}
+          @extend #{$trigger}
