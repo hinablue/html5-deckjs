@@ -27,7 +27,7 @@ else
     echo "Copying files into your project..."
 
     cd -- "$src/libs/html5-boilerplate/"
-    cp -vr -- css js img build test *.html *.xml *.txt *.png *.ico .htaccess "$dst"
+    cp -vr -- css js img test *.html *.xml *.txt *.png *.ico .htaccess "$dst"
 
     mkdir $dst/js/mylibs/deck.js || exit 1
     
