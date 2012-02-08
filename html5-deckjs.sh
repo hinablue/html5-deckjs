@@ -29,6 +29,7 @@ else
     cd -- "$src/libs/html5-boilerplate/"
     cp -vr -- css js img test *.html *.xml *.txt *.png *.ico .htaccess "$dst"
 
+    mkdir $dst/js/mylibs || exit 1
     mkdir $dst/js/mylibs/deck.js || exit 1
     
     cd -- "$src/libs/deck.js/"
@@ -50,7 +51,7 @@ do
     style=$(echo $value | grep 'style.css' | wc -l)
     body=$(echo $value | grep '<body>' | wc -l)
     main=$(echo $value | grep 'role="main"' | wc -l)
-    script=$(echo $value | grep '<script defer src="js/script.js"></script>' | wc -l)
+    script=$(echo $value | grep '<script src="js/script.js"></script>' | wc -l)
     special=$(echo $value | grep "window.jQuery" | wc -l)
     if [[ $style -ne 0 ]]
     then
